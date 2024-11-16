@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>На взлёт!</title>
+</head>
+<body>
+    <h1>На взлёт!</h1>
+    <form method="POST">
+        {% for question in questions %}
+            <h2>{{ question.question }}</h2>
+            <ul>
+                {% for option in question.options %}
+                    <li><input type="radio" name="{{ loop.index }}" value="{{ option }}"> {{ option }}</li>
+                {% endfor %}
+            </ul>
+        {% endfor %}
+        <button type="submit">Построить траекторию</button>
+    </form>
+</body>
+</html>

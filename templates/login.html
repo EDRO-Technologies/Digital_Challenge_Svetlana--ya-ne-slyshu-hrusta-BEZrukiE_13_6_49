@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Вход</title>
+</head>
+<body>
+    <h1>Вход</h1>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <label for="email">Email:</label>
+        {{ form.email(size=30) }}<br><br>
+
+        <label for="password">Пароль:</label>
+        {{ form.password(size=30) }}<br><br>
+
+        <button type="submit">Войти</button>
+    </form>
+    <a href="/register">Нет аккаунта? Зарегистрироваться</a>
+</body>
+</html>
