@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Мероприятия</title>
-</head>
-<body>
-    <h1>Мероприятия и события</h1>
-    <ul>
-        {% for event in events %}
-            <li>
-                <strong>{{ event.title }}</strong><br>
-                Дата: {{ event.date }}<br>
-                Место: {{ event.location }}<br>
-            </li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">Events</h2>
+<p>Предстоящие события:</p>
+
+<ul class="list-group">
+    {% for event in events %}
+        <li class="list-group-item">
+            <strong>{{ event.name }}</strong><br>
+            Дата: {{ event.date }}<br>
+            Место проведения: {{ event.location }}
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

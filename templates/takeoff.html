@@ -1,22 +1,27 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>На взлёт!</title>
-</head>
-<body>
-    <h1>На взлёт!</h1>
-    <form method="POST">
-        {% for question in questions %}
-            <h2>{{ question.question }}</h2>
-            <ul>
-                {% for option in question.options %}
-                    <li><input type="radio" name="{{ loop.index }}" value="{{ option }}"> {{ option }}</li>
-                {% endfor %}
-            </ul>
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">На взлёт!</h2>
+<p>Постройте свою траекторию профессионального развития на основе предпочтений и достижений.</p>
+
+<form method="POST" action="{{ url_for('takeoff') }}">
+    {{ form.hidden_tag() }}
+    <div class="mb-3">
+        {{ form.preferences.label(class="form-label") }}
+        {{ form.preferences(class="form-control", placeholder="Введите предпочтения") }}
+        {% for error in form.preferences.errors %}
+            <div class="text-danger">{{ error }}</div>
         {% endfor %}
-        <button type="submit">Построить траекторию</button>
-    </form>
-</body>
-</html>
+    </div>
+    <button type="submit" class="btn btn-primary">Создать цели</button>
+</form>
+
+{% if goals %}
+    <hr>
+    <h4>Ваши персонализированные цели</h4>
+    <ul class="list-group">
+        {% for goal in goals %}
+            <li class="list-group-item">{{ goal }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock %}

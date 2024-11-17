@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">Меры поддержки</h2>
+<p>Доступные меры поддержки:</p>
+
+<div class="list-group">
+    <a href="{{ federal_url }}" class="list-group-item list-group-item-action" target="_blank">
+        Федеральные меры поддержки
+    </a>
+    <a href="{{ regional_url }}" class="list-group-item list-group-item-action" target="_blank">
+        Региональные меры поддержки
+    </a>
+</div>
+{% endblock %}

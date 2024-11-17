@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="text-center">Профиль</h2>
+
+<h4>Обновить профиль</h4>
+<form method="POST" action="{{ url_for('dashboard') }}">
+    {{ profile_form.hidden_tag() }}
+    <div class="mb-3">
+        {{ profile_form.first_name.label(class="form-label") }}
+        {{ profile_form.first_name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ profile_form.last_name.label(class="form-label") }}
+        {{ profile_form.last_name(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ profile_form.patronymic.label(class="form-label") }}
+        {{ profile_form.patronymic(class="form-control") }}
+    </div>
+    <div class="mb-3">
+        {{ profile_form.age.label(class="form-label") }}
+        {{ profile_form.age(class="form-control") }}
+    </div>
+    <button type="submit" name="submit_profile" class="btn btn-primary">Обновить профиль</button>
+</form>
+
+<hr>
+
+<h4>Достижения</h4>
+<form method="POST" action="{{ url_for('dashboard') }}">
+    {{ achievement_form.hidden_tag() }}
+    <div class="mb-3">
+        {{ achievement_form.achievements.label(class="form-label") }}
+        {{ achievement_form.achievements(class="form-control", rows=5) }}
+    </div>
+    <button type="submit" name="submit_achievement" class="btn btn-success">Сохранить достижения</button>
+</form>
+{% endblock %}
